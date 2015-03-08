@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import httpclient
-import json except add
+import httpclient, json
 
 const url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8"
 

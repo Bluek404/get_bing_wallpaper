@@ -18,10 +18,10 @@ const url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8"
 
 proc findLastString(a:string, item:char): int =
   var last:int
-  for i in items(a):
+  for i in a.items:
     if i == item:
       last = result
-    inc(result)
+    result.inc()
   result = -1
   return last  
 
@@ -30,10 +30,7 @@ var data = parseJson(getContent(url))
 for img in data["images"]:
   var
     imgURL = img["url"].str
-    imgName:string = ""
-
-  for i in findLastString(imgURL, '/') + 1 .. imgURL.len:
-    imgName.add(imgURL[i])
+    imgName = imgURL[findLastString(imgURL, '/') + 1 .. imgURL.len]
 
   writeFile(imgName, getContent(imgURL))
   echo(imgName)

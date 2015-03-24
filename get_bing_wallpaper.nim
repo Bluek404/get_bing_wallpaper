@@ -16,14 +16,10 @@ import httpclient, json
 
 const url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8"
 
-proc findLastString(a:string, item:char): int =
-  var last:int
-  for i in a.items:
-    if i == item:
-      last = result
-    result.inc()
-  result = -1
-  return last  
+proc findLast(a:string, item:char): int =
+  for i in countdown(a.len-1, 0):
+    if a[i] == item:
+      return i
 
 var data = parseJson(getContent(url))
 
